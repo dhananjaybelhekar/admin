@@ -22,8 +22,9 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
-	public function main()
+	public function show($data)
 	{
-		$this->load->view('main');
+		//$this->load->view('mai');
+		echo json_encode($data);
 	}
 }
