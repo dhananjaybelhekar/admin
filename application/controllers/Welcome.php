@@ -24,7 +24,7 @@ class Welcome extends CI_Controller {
 	}
 	public function show($data)
 	{
-		//$this->load->view('mai');
-		echo json_encode($data);
+		$this->load->view($data);
+		//echo json_encode($data);
 	}
 }
