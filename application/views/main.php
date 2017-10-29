@@ -5,6 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>admin.onjay.in</title>
   <!-- Tell the browser to be responsive to screen width -->
+<script src="/bower_components/fingerprintjs2/dist/fingerprint2.min.js"></script>
+  <script>
+function myAsyncFunction(n,e){return new Promise(function(t,o){var i=new XMLHttpRequest;i.open("POST",n),i.setRequestHeader("Content-Type","application/json;charset=UTF-8"),i.onload=function(){t(JSON.parse(i.responseText))},i.onerror=function(){o(i.statusText)},i.send(JSON.stringify(e))})}(new Fingerprint2).get(function(n,e){myAsyncFunction("api/fcheck",{id:n}).then(function(n){0==n.success&&(window.location=n.url)})});
+  </script>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">

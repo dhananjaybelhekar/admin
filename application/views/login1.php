@@ -1,12 +1,10 @@
-<html ng-app="todoApp">
+<html>
   <head>
   <title>admin.onjay.in</title>
   <script src="/bower_components/fingerprintjs2/dist/fingerprint2.min.js"></script>
   <script>
     new Fingerprint2().get(function(result, components){
         myAsyncFunction('api/fcheck',{id:result}).then(function(res){
-          console.log(res);
-          debugger;
           window.location =res.url; 
         })
     });
@@ -20,7 +18,6 @@
     xhr.send(JSON.stringify(data));
   });
 }
-
   </script>
 </head>
 <body>

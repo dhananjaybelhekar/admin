@@ -13,7 +13,6 @@
       todoList.data.result=result;
       //todoList.data.components=components;
     });
-
     todoList.login= function(){
           var x = $resource('/api/login',null,{ 'get':{method:'POST'}});
           x.get(todoList.data).$promise.then(function(res){
