@@ -15,7 +15,7 @@
     });
 
     todoList.login= function(){
-          var x = $resource('http://onjay.com/api/login',null,{ 'get':{method:'POST'}});
+          var x = $resource('/api/login',null,{ 'get':{method:'POST'}});
           x.get(todoList.data).$promise.then(function(res){
             console.log(todoList.data);
               console.log(res);
