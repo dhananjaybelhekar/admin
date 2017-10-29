@@ -1,20 +1,26 @@
 <html ng-app="todoApp">
   <head>
-  <title>admin.onjay.in</title>
+    <title>admin.onjay.in</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.6/angular-resource.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.1/fingerprint2.min.js"></script>
   <script>
   angular.module('todoApp', ['ngResource'])
   .controller('TodoListController', function($resource) {
     var todoList = this;
     todoList.data={};
+    new Fingerprint2().get(function(result, components){
+      todoList.data.result=result;
+      //todoList.data.components=components;
+    });
+
     todoList.login= function(){
-          var x = $resource('https://jsonplaceholder.typicode.com/posts',null,{ 'get':{method:'GET',isArray:true}});
-          x.get({}).$promise.then(function(res){
+          var x = $resource('http://onjay.com/api/login',null,{ 'get':{method:'POST'}});
+          x.get(todoList.data).$promise.then(function(res){
             console.log(todoList.data);
               console.log(res);
+              window.location = '/main';
           });
-      console.log('hii');
     }
   });
   </script>
