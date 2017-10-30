@@ -26,6 +26,17 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view($data);
 	}
+	public function logout()
+	{
+		$this->load->database();
+		$req = json_decode($this->input->raw_input_stream);	
+		if(isset($req->result))
+		{
+			echo "delete";
+			// $qr =$this->db->delete('log', array('fingerprint' =>$req->result));
+			// $this->db->query($qr);
+		}
+	}
 	public function login()
 	{
 		/*
