@@ -5,8 +5,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.6/angular-resource.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.5.1/fingerprint2.min.js"></script>
     <script>
-function myAsyncFunction(n,e){return new Promise(function(t,o){var i=new XMLHttpRequest;i.open("POST",n),i.setRequestHeader("Content-Type","application/json;charset=UTF-8"),i.onload=function(){t(JSON.parse(i.responseText))},i.onerror=function(){o(i.statusText)},i.send(JSON.stringify(e))})}(new Fingerprint2).get(function(n,e){myAsyncFunction("api/fcheck",{id:n}).then(function(n){0==n.success&&(window.location=n.url)})});
-
   angular.module('todoApp', ['ngResource'])
   .controller('TodoListController', function($resource) {
     var todoList = this;
