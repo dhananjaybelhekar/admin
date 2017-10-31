@@ -1,0 +1,21 @@
+html(ng-app='todoApp')
+  head
+    title admin.onjay.in
+    script(src='/public/js/vendor.js')
+    script(src='/dev/script.module.js')
+    link(rel='stylesheet', href='dev/style.css')
+  body(ng-controller='TodoListController as todoList')
+    .wrapper.fadeInDown
+      #formContent
+        h2.active Sign In
+        h2.inactive.underlineHover Sign Up
+        .fadeIn.first
+          img#icon(src='http://danielzawadzki.com/codepen/01/icon.svg', alt='User Icon')
+        form
+          input.fadeIn.second(type='text', name='login', placeholder='login', ng-model='todoList.data.user')
+          |  
+          input.fadeIn.third(type='password', name='login', placeholder='password', ng-model='todoList.data.pass')
+          |  
+          input.fadeIn.fourth(type='submit', value='Log In', ng-click='todoList.login()')
+        #formFooter
+          a.underlineHover(href='#') Forgot Password?

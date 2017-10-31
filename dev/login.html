@@ -1,0 +1,23 @@
+<html ng-app="todoApp">
+  <head>
+    <title>admin.onjay.in</title>
+    <script src="/public/js/vendor.js"></script>
+  <script src="/dev/script.module.js"></script>
+  <link rel="stylesheet" href="dev/style.css"/>
+  </head>
+  <body ng-controller="TodoListController as todoList">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <h2 class="active">Sign In</h2>
+      <h2 class="inactive underlineHover">Sign Up</h2>
+      <div class="fadeIn first"><img id="icon" src="http://danielzawadzki.com/codepen/01/icon.svg" alt="User Icon"/></div>
+      <form>
+        <input type="text" name="login" placeholder="login" ng-model="todoList.data.user" class="fadeIn second"/>
+        <input type="password" name="login" placeholder="password" ng-model="todoList.data.pass" class="fadeIn third"/>
+        <input type="submit" value="Log In" ng-click="todoList.login()" class="fadeIn fourth"/>
+      </form>
+      <div id="formFooter"><a href="#" class="underlineHover">Forgot Password?</a></div>
+    </div>
+  </div>
+</body>
+</html>

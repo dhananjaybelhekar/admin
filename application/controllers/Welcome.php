@@ -20,11 +20,14 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{	
-		$this->load->view('login1');
+		$this->load->library('pug');
+    	$this->pug->view('login');
 	}
 	public function show($data)
 	{
-		$this->load->view($data);
+//		$this->load->view($data);
+			$this->load->library('pug');
+    	$this->pug->view($data);
 	}
 	public function logout()
 	{
@@ -32,9 +35,14 @@ class Welcome extends CI_Controller {
 		$req = json_decode($this->input->raw_input_stream);	
 		if(isset($req->result))
 		{
-			echo "delete";
-			// $qr =$this->db->delete('log', array('fingerprint' =>$req->result));
+			$qr =$this->db->delete('log', array('fingerprint' =>$req->result));
 			// $this->db->query($qr);
+			$arr= array();
+			if($qr){
+				$arr['url']= 'login';		
+				$arr['success']= true;
+			}
+			echo json_encode($arr);
 		}
 	}
 	public function login()
@@ -56,7 +64,7 @@ class Welcome extends CI_Controller {
 			$logArr =array(
 				'user'=>$user[0]['username'],
 				'agent'=>$this->agent->agent_string(),
-				'endDate'=>date('Y-m-d H:i:s', time() + (60 * 60 * 30)),
+				'endDate'=>date('Y-m-d H:i:s', time() + (60 * 60 * 60)),
 				'fingerprint'=>$req->result,
 				'ip'=>$this->input->ip_address()
 			);
@@ -90,8 +98,10 @@ class Welcome extends CI_Controller {
 		{
 			$arr['success']=false;
 			$arr['url']='/login';
+			$arr['qr']= "SELECT * FROM `log` WHERE `fingerprint` = '".$req->id."' AND `endDate` >  '".date('Y-m-d H:i:s', time())."'";
 		}
 		echo json_encode($arr);	
+		//echo "SELECT * FROM `log` WHERE `fingerprint` = '".$req->id."' AND `endDate` >  '".date('Y-m-d H:i:s', time())."'";
 	}
 	//
 	public function generateRandomString($length = 64) {
