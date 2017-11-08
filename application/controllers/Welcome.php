@@ -2,7 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-
+	 public function __construct()
+        {
+		$this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode(array('Access-Control-Allow-Origin' => '*',
+'Access-Control-Allow-Methods'=>'GET,PUT,POST,DELETE',
+'Access-Control-Allow-Headers'=>'Content-Type, Authorization, accept, access-control-allow-origin'
+        	)));
+        }
+		
 	/**
 	 * Index Page for this controller.
 	 *
