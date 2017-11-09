@@ -6,29 +6,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.6/angular-resource.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ckeditor/1.0.3/angular-ckeditor.min.js"></script>
+     
     <script>
     new Fingerprint2().get(function(result, components){
-        myAsyncFunction('http://onjay.in/api/login',{"result":"f9ae9e278785d024d274dc4096888816","user":"dbel431@onjay.in","pass":"anjay1516@anjay1516"}).then(function(res){
-          window.location =res.url; 
-        })
+       console.log(result);
     });
-    function myAsyncFunction(url,data) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-    xhr.setRequestHeader('Access-Control-Allow-Methods','POST');
-    xhr.onload = () => resolve(JSON.parse(xhr.responseText));
-    xhr.onerror = () => reject(xhr.statusText);
-    xhr.send(JSON.stringify(data));
-  });
-}
     </script>
     <script src="todo.js"></script>
   </head>
   <body ng-controller="TodoListController as todoList">
-    <h1>hii</h1>
     <ui-view></ui-view>
   </body>
 </html>
